@@ -2,8 +2,7 @@ import os
 from pyprocess import pyprocess as pp
 
 # Setup
-main_dir = /home/USER/Desktop
-project_dir = os.path.join(main_dir, 'MyProject')
+project_dir = r'/home/USER/Desktop/MyProject'
 pp.setup.Project_Folders(project_dir)
 
 # Cleaning
