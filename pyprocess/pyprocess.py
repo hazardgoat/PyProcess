@@ -26,7 +26,6 @@ class Setup():
 setup = Setup()
 
 
-
 # Class holding functions for cleaning tabluar data such as text and csv files
 class Clean():
     
@@ -120,7 +119,6 @@ class Clean():
                 f.write(rejoined_line)
 
 clean = Clean()
-
 
 
 # Class holding functions for converting tabluar data files to other file types
