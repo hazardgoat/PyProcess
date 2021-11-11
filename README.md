@@ -14,7 +14,7 @@ Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyp
 
 ## Class - Clean
 #### Functions
-`clean.Correct_Delimiter`: Standardizes the delimiter between columns in tabular data files.
+`clean.Correct_Delimiter`: Standardizes the delimiter between columns in tabular data files. Saves the cleaned files to a folder named *Cleaned_Files* within the input directory.
 #### Parameters
 `data_in`: File, or directory of files, to be cleaned up <File/Directory Path>
 
@@ -26,7 +26,7 @@ Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyp
 
 ## Class - Conversion
 #### Functions
-`convert.CSV`: Converts common tabular data files such as TXT and TSV files to CSV.
+`convert.CSV`: Converts common tabular data files such as TXT and TSV files to CSV. Saves the converted files to a folder named *CSV_Converted* within the input directory.
 #### Parameters
 `data_in`: File, or directory of files, to be converted <File/Directory Path>
   
