@@ -10,7 +10,7 @@ Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyp
 #### Functions
 `setup.Project_Folders`: Sets up project folders. Creates the main project folder, as well as *Data*, *Methods*, and *Results* folders within it.
 #### Parameters
-`main_dir`: Path to the project directory. Can be an existing folder or one yet to be created.
+`proj_dir`: Path to the project directory. Can be an existing folder or one yet to be created.
 
 ## Class - Clean
 #### Functions
