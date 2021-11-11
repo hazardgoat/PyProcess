@@ -4,7 +4,7 @@ A Python library for setting up projects using tabular data. It can create proje
 # Documentation
 ## Setup
 #### Functions
-`setup.Project_Folders`: Sets up project folders. Creates the main project folder, as well as Data, Methods, and Results folders within it.
+`setup.Project_Folders`: Sets up project folders. Creates the main project folder, as well as *Data*, *Methods*, and *Results* folders within it.
 #### Parameters
 `main_dir`: Path to the project directory. Can be an existing folder or one yet to be created.
 
