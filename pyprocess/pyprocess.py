@@ -11,13 +11,13 @@ class Setup():
     Sets up project folders
     main_dir: path to the project directory. Can be an existing folder or one yet to be created.
     '''
-    def Project_Folders(self, main_dir):
+    def Project_Folders(self, proj_dir):
 
-        data_folder = os.path.join(main_dir, 'Data')
-        methods_folder = os.path.join(main_dir, 'Methods')
-        results_folder = os.path.join(main_dir, 'Results')
+        data_folder = os.path.join(proj_dir, 'Data')
+        methods_folder = os.path.join(proj_dir, 'Methods')
+        results_folder = os.path.join(proj_dir, 'Results')
 
-        directories = [main_dir, data_folder, methods_folder, results_folder]
+        directories = [proj_dir, data_folder, methods_folder, results_folder]
 
         # Iterates through the list of directories and creates them if they don't already exist
         for directory in directories:
