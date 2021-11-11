@@ -1,18 +1,18 @@
 # PyProcess
 A Python library for setting up projects using tabular data. It can create project folders, standardize delimiters, and convert files to CSV from either individual files or a directory.
 
+# Documentation
 To install, navigate to the directory holding your Python libraries, then past the "pyprocess" folder into it. The pyrocess folder should contain the `pyprocess` and `__init__.py` files.
 
 Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyprocess`
 
-# Documentation
-## Setup
+## Class - Setup
 #### Functions
 `setup.Project_Folders`: Sets up project folders. Creates the main project folder, as well as *Data*, *Methods*, and *Results* folders within it.
 #### Parameters
 `main_dir`: Path to the project directory. Can be an existing folder or one yet to be created.
 
-## **Clean**
+## Class - Clean
 #### Functions
 `clean.Correct_Delimiter`: Standardizes the delimiter between columns in tabular data files.
 #### Parameters
@@ -24,7 +24,7 @@ Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyp
   
 `concat_nl`: Sets whether to merge new line delimiters with the last element of each line so as to remove trailing commas <True/False>
 
-## Conversion
+## Class - Conversion
 #### Functions
 `convert.CSV`: Converts common tabular data files such as TXT and TSV files to CSV.
 #### Parameters
