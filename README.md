@@ -1,6 +1,9 @@
 # PyProcess
 A Python library for setting up projects using tabular data. It can create project folders, standardize delimiters, and convert files to CSV from either individual files or a directory.
 
+To install, navigate to the directory holding your Python libraries, then past the "pyprocess" folder into it. The pyrocess folder should contain the `pyprocess` and `__init__.py` files.
+Example path: `C:\Users\<user>\miniconda3\envs\<user envs>\Lib\site-packages\pyprocess`
+
 # Documentation
 ## Setup
 #### Functions
