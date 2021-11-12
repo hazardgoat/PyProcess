@@ -8,7 +8,7 @@ pp.setup.Project_Folders(project_dir)
 # Cleaning
 files_dir = os.path.join(project_dir, 'Data')
 replacements = {' +':',', '\t':','}
-pp.clean.Correct_Delimiter(files_dir, replacements, dir=True, concat_nl=True)
+pp.clean.Clean_Text(files_dir, replacements, dir=True, delete_empty=True, concat_newline=True)
 
 # Conversion
 files_dir = os.path.join(files_dir, 'Cleaned_Files')
