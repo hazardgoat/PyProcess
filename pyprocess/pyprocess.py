@@ -9,15 +9,16 @@ class Setup():
     
     '''
     Sets up project folders
+
     main_dir: path to the project directory. Can be an existing folder or one yet to be created.
     '''
-    def Project_Folders(self, proj_dir):
+    def Project_Folders(self, main_dir):
 
-        data_folder = os.path.join(proj_dir, 'Data')
-        methods_folder = os.path.join(proj_dir, 'Methods')
-        results_folder = os.path.join(proj_dir, 'Results')
+        data_folder = os.path.join(main_dir, 'Data')
+        methods_folder = os.path.join(main_dir, 'Methods')
+        results_folder = os.path.join(main_dir, 'Results')
 
-        directories = [proj_dir, data_folder, methods_folder, results_folder]
+        directories = [main_dir, data_folder, methods_folder, results_folder]
 
         # Iterates through the list of directories and creates them if they don't already exist
         for directory in directories:
@@ -26,22 +27,25 @@ class Setup():
 setup = Setup()
 
 
+
 # Class holding functions for cleaning tabluar data such as text and csv files
 class Clean():
     
     '''
-    Standardizes the delimiter between columns.
-    data_in: file, or directory of files, to be cleaned up <File/Directory Path>
-    replacements: dictionary of elements to be replaced <to be replaced>:<replacment>, example: {"\t":","}
-    dir: sets whether to process a single file or a directory of files <True/False>
-    concat_nl: sets whether to merge new line delimiters with the last element of each line so as to remove trailing commas <True/False>
+    Cleans up text in files, with parameters for further cleaning up files when standarizing delimiters in tabular data.
+
+    data_in: File, or directory of files, to be cleaned up <File/Directory Path>
+    replacements: Dictionary of elements to be replaced <to be replaced>:<replacment>, example: {"\t":","}
+    dir: Sets whether to process a single file or a directory of files <True/False>
+    delete_empty: Removes any empty columns that get created when the delimiter is standardized (file specific). Has no effect if no empty columns are created. <True/False>
+    concat_newline: Sets whether to merge new line delimiters with the last element of each line so as to remove trailing commas (file specific) <True/False>
     '''
-    def Correct_Delimiter(self, data_in, replacements, dir=False, concat_nl=False):
+    def Clean_Text(self, data_in, replacements, dir=False, delete_empty=False, concat_newline=False):
         out_dir = os.path.join(data_in, 'Cleaned_Files')
         os.makedirs(out_dir, exist_ok = True)
 
         if dir == False:
-            self.Process_Delimiter_Correction(replacements, data_in, out_dir, concat_nl)  
+            self.Process_Clean_Text(replacements, data_in, out_dir, delete_empty, concat_newline)  
 
         else:
             for f_name in os.listdir(data_in):
@@ -49,11 +53,11 @@ class Clean():
 
                     f_in = os.path.join(data_in, f_name)
 
-                    self.Process_Delimiter_Correction(replacements, f_in, out_dir, concat_nl)    
+                    self.Process_Clean_Text(replacements, f_in, out_dir, delete_empty, concat_newline)    
 
 
-    # Preforms the delimiter standardization called in the Correct_Delimiter function so as to reduce code duplication.
-    def Process_Delimiter_Correction(self, replacements, out_dir, f_in, concat_nl):
+    # Preforms the text cleaning called in the Clean_Text function so as to reduce code duplication.
+    def Process_Clean_Text(self, replacements, out_dir, f_in, delete_empty, concat_newline):
         with open(f_in, 'r') as f:
             data = f.read()
 
@@ -66,17 +70,20 @@ class Clean():
 
         with open(f_out, 'w') as f:
             f.write(data)
-            
-        self.Remove_Empty_Columns(f_out)
 
-        if concat_nl == False:
+        if delete_empty == False:
+            pass
+        else:
+            self.Delete_Empty_Columns(f_out)
+
+        if concat_newline == False:
             pass
         else:
             self.Concatonate_New_Line(f_out) 
 
 
     # Removes any empty columns that get created when the delimiter is standardized (file specific). Has no effect if no empty columns are created.
-    def Remove_Empty_Columns(self, f_out):
+    def Delete_Empty_Columns(self, f_out):
         with open(f_out, 'r') as f:
             data = f.readlines()
 
@@ -121,11 +128,13 @@ class Clean():
 clean = Clean()
 
 
+
 # Class holding functions for converting tabluar data files to other file types
 class Conversion():
 
     '''
     Converts common tabular data files to CSV.
+
     data_in: file, or directory of files, to be converted <File/Directory Path>
     sep: delimiter used in the input file, e.g. <",">
     dir: sets whether to process a single file or a directory of files <True/False>
